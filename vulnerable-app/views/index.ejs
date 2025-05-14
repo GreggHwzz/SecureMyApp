@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>SecureMyApp (version vulnérable)</title>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"> <!-- Favicon hacker style -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e272e, #2f3640);
+      color: #f1f2f6;
+      min-height: 100vh;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: #70a1ff;
+    }
+
+    form {
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1rem;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="file"] {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffff0f;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #dcdde1;
+    }
+
+    button {
+      padding: 0.75rem;
+      background: linear-gradient(to right, #70a1ff, #1e90ff);
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1e90ff, #70a1ff);
+    }
+
+    ul {
+      list-style-type: none;
+      margin-top: 1rem;
+      padding: 0;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    li {
+      backdrop-filter: blur(6px);
+      background-color: rgba(255, 255, 255, 0.07);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      word-break: break-word;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      form {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🏠 Bienvenue sur SecureMyApp</h1>
+
+  <h2>🔐 Login</h2>
+  <form action="/login" method="POST">
+    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+    <button type="submit">Connexion</button>
+  </form>
+
+  <h2>📝 Ajouter un commentaire</h2>
+  <form action="/comment" method="POST">
+    <input type="text" name="comment" placeholder="Ton message" required>
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <ul>
+    <% comments.forEach(c => { %>
+      <li><%- c %></li>
+    <% }) %>
+  </ul>
+
+  <h2>📤 Upload d’un fichier</h2>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Envoyer</button>
+  </form>
+</body>
+</html>
